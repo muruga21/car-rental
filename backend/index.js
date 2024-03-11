@@ -15,8 +15,8 @@ app.listen(5000,()=>{
 
 try{
     const connect = async() =>{
-        await mongoose.connect("mongodb+srv://Kishore:bk_sensei@mern.d6qyuyj.mongodb.net/?retryWrites=true&w=majority&appName=Mern").then(()=>{console.log("muruga")})
-        console.log("hello world")   
+        await mongoose.connect("mongodb+srv://Kishore:bk_sensei@mern.d6qyuyj.mongodb.net/?retryWrites=true&w=majority&appName=Mern")
+        console.log("db connected")   
     }
     connect();
 }
