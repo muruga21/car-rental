@@ -11,14 +11,18 @@ const login = async (req, res) => {
     try{
         const userName = req.body.Name;
 
-        const Pass = req.body.Password;
+        const passWord = req.body.Password;
 
         if(userName && Pass){
             const user = userModel.find({userName})
 
             if(!user){
-                res.status
+                res.status(500).json({error:true,message:"User Not Found"})
             }
+
+            const passwordMatch = await bcrypt.compare(passWord, user.password);
+
+            if(passwordMatch)
         }
 
         
