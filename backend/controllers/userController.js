@@ -1,6 +1,9 @@
 const bcrypt = require('bcrypt');
 const { userModel } = require('../models/userSchema');
 const { response } = require('express');
+const { carDetailModel } = require('../models/carDetailSchema');
+
+
 //import schema
 
 //model - schema
@@ -82,19 +85,24 @@ const signup = async(req, res) =>{
 
 
 const displayCars =async (req,res)=>{
-    const response = await carDetails.find();
+    try
+    {const response = await carDetailModel.find();
     if(!response){
         return res.status(404).json({error:true,message:"No Cars Found"})
     }
-    return res.status(200).json({error:false,message:"CarsFound"});
+    return res.status(200).json({error:false,message:response});}
+    catch(err){
+        return res.status(500).json({error:true,message:err.message})
+    }
+
 }
 
 const filterCars =async (req,res)=>{
-    const dist = req.body.district
-    const response = await carDetails.find({district: dist})
-    const count = await carDetails.find({district: dist}).count()
+    const dist = req.body.location
+    const response = await carDetailModel.find({location: dist})
+    const count = await carDetailModel .find({location: dist}).count()
     if(count==0){
-      return res.status(500).json({error:true,message:`No Cars in the district ${dist}`})
+      return res.status(500).json({error:true,message:`No Cars in the location ${dist}`})
     }
     else{
         return res.status(200).json({error:false,count:count,response:response})
