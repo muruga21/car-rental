@@ -7,7 +7,39 @@ const { userModel } = require('../models/userSchema');
 //c controller - functions
 const saltRounds = 10;
 
-const login = (req, res) =>{
+const login = async (req, res) => {
+    try{
+        const userName = req.body.Name;
+
+        const passWord = req.body.Password;
+        console.log(userName,passWord)
+        if(userName!="" && passWord!=""){
+            const user = await userModel.findOne({userName})
+             console.log(user)
+            if(!user){
+              return  res.status(500).json({error:true,message:"User Not Found"})
+            }
+            
+            const passwordMatch =  await bcrypt.compare(passWord,user.password);
+            console.log(passwordMatch)
+            if(passwordMatch){
+               return res.status(200).json({error:false,message:"LoginSucessful"})
+            }
+            else{
+                return res.status(500).json({error:true,message:"Password not Matching"})
+            }
+        }
+        else{
+            return res.status(500).json({error:true,message:"Enter UserName and PassWord"})
+
+        }
+
+        
+    }
+    catch(e){
+        return res.status(404).json({error:true,message:e.message})
+
+    }
     //check if user in db
     //res user not found
 
@@ -15,8 +47,6 @@ const login = (req, res) =>{
     // res pass not match
 
     //res logedin
-    console.log("kishore")
-    res.status(200).json({message: "working"})
 }
 
 const signup = async(req, res) =>{
