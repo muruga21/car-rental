@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const { userModel } = require('../models/userSchema');
+const { response } = require('express');
 //import schema
 
 //model - schema
@@ -31,7 +32,6 @@ const login = async (req, res) => {
         }
         else{
             return res.status(500).json({error:true,message:"Enter UserName and PassWord"})
-
         }
 
         
@@ -76,8 +76,30 @@ const signup = async(req, res) =>{
     }
     catch(err){
         console.log(err.message)
-        return res.status(400).json({error:true, message: err.message})
+        return res.status(404).json({error:true, message: err.message})
     }
 }
 
-module.exports = {login, signup}
+
+const displayCars =async (req,res)=>{
+    const response = await carDetails.find();
+    if(!response){
+        return res.status(404).json({error:true,message:"No Cars Found"})
+    }
+    return res.status(200).json({error:false,message:"CarsFound"});
+}
+
+const filterCars =async (req,res)=>{
+    const dist = req.body.district
+    const response = await carDetails.find({district: dist})
+    const count = await carDetails.find({district: dist}).count()
+    if(count==0){
+      return res.status(500).json({error:true,message:`No Cars in the district ${dist}`})
+    }
+    else{
+        return res.status(200).json({error:false,count:count,response:response})
+    }
+
+}
+
+module.exports = {login, signup,displayCars,filterCars}
