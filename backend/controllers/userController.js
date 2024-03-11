@@ -22,6 +22,9 @@ const login = (req, res) =>{
 const signup = async(req, res) =>{
     const userName = req.body.userName;
     const password = req.body.password;
+    if(userName == "" || password == ""){
+        return res.status(400).json({error: true, message:"invalid credentials"})
+    }
     try{
         const response = await userModel.findOne({userName:userName});
         if(response){
@@ -40,7 +43,6 @@ const signup = async(req, res) =>{
             console.log(err.message)
             return res.status(400).json({error:true, message: err.message})
         }
-
     }
     catch(err){
         console.log(err.message)
