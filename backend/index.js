@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors') 
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoutes')  
+const adminRoutes = require('./routes/adminRoutes')
 const mongoose = require("mongoose")
 const bcrypt = require('bcrypt');
 
@@ -27,12 +28,17 @@ catch(err){
 }
 
 app.use('/users',userRoutes)
+app.use('/admin',adminRoutes)
 
 app.get('/hello',async (req, res)=>{
     let Ghash = ""
     await bcrypt.hash("muruga", saltRounds).then(function(hash) {
         Ghash = hash
         console.log(Ghash)
+    });
+    await bcrypt.compare("muruga", Ghash).then(function(result) {
+        console.log(Ghash)
+        res.status(200).json({message:{result}})
     });
     return
 })
