@@ -62,4 +62,18 @@ const uploadCars = async(req, res) =>{
         return res.status(400).json({error:true, message:err.message});
     }
 }
-module.exports = {signup, uploadCars}
+
+const viewRentedCars = async(req, res)=>{
+    console.log(req.cookies);
+    try{
+        const doc = await carDetailModel.find({isAvailable:false});
+        if(doc){
+            return res.status(200).json({error:false, message:doc});
+        }
+    }
+    catch(err){
+        return res.status(400).json({error:true, message: err.message});
+    }
+}
+
+module.exports = {signup, uploadCars, viewRentedCars}

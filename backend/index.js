@@ -5,11 +5,13 @@ const userRoutes = require('./routes/userRoutes')
 const adminRoutes = require('./routes/adminRoutes')
 const mongoose = require("mongoose")
 const bcrypt = require('bcrypt');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
+app.use(cookieParser())
 const saltRounds = 10;
 
 app.listen(5000,()=>{
