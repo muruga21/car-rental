@@ -20,6 +20,14 @@ const router = createBrowserRouter([
   {
     path:'/:carid',
     element:<RentPage/>
+  },
+  {
+    path: '/login',
+    element: <Login/>
+  },
+  {
+    path: '/signup',
+    element: <Signup/>
   }
 ]);
 
