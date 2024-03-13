@@ -17,10 +17,7 @@ function App() {
    
     <NavBar/>
     <Homepage/>
-       
-      
-    </div>
-  
+  </div>
   )
 }
 
