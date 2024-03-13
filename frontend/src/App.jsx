@@ -11,11 +11,12 @@ function App() {
 
   // const dummyDa
   return (
-    <div className='flex  items-center flex-col w-[100%] h-[100%]'>
+
+   
+  <div className='flex  items-center flex-col w-[100%] h-[100%]'>
+   
     <NavBar/>
     <Homepage/>
-    <Login/>
-    <Signup/>
   </div>
   )
 }
