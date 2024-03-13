@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     element:<App /> ,
   },
   {
-    path:'/Rent',
+    path:'/:carid',
     element:<RentPage/>
   }
 ]);
