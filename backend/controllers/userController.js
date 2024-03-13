@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const { userModel } = require('../models/userSchema');
 const { response } = require('express');
 const { carDetailModel } = require('../models/carDetailSchema');
-const { generateToken } = require('../middleware/auth');
+const { generateToken } = require('../utils/Token');
 
 
 //import schema
@@ -13,6 +13,7 @@ const { generateToken } = require('../middleware/auth');
 const saltRounds = 10;
 
 const login = async (req, res) => {
+    console.log("check")
     try{
         const userName = req.body.Name;
         const passWord = req.body.Password;
@@ -104,6 +105,7 @@ const displayCars =async (req,res)=>{
 }
 
 const filterCars =async (req,res)=>{
+    //location
     const dist = req.body.location
     const response = await carDetailModel.find({location: dist})
     const count = await carDetailModel .find({location: dist}).count()

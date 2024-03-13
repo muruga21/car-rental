@@ -29,18 +29,18 @@ catch(err){
     console.log(err.message)
 }
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://yourfrontenddomain.com');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    next();
+});
+
 app.use('/users',userRoutes)
 app.use('/admin',adminRoutes)
 
-app.get('/hello',async (req, res)=>{
-    let Ghash = ""
-    await bcrypt.hash("muruga", saltRounds).then(function(hash) {
-        Ghash = hash
-        console.log(Ghash)
-    });
-    await bcrypt.compare("muruga", Ghash).then(function(result) {
-        console.log(Ghash)
-        res.status(200).json({message:{result}})
-    });
-    return
-})
+// app.get('/hello',async (req, res)=>{
+//     res.cookie("muruga","abcdefghijklmn")
+//     return res.status(200).json({error:false, message:"hello world"})
+// })

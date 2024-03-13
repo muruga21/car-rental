@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Components/LoginPage.css'
 import CarDetailCard from './Components/CarDetailCard'
 import NavBar from './Components/NavBar';
@@ -8,6 +8,12 @@ import Signup from './Components/SignupPage'
 import Login from './Components/LoginPage'
 import Homepage from './Components/Homepage';
 function App() {
+
+  // const apiUrl = process.env.REACT_APP_BACK_END;
+  useEffect(()=>{
+    // console.log(apiUrl)
+    console.log(document.cookie)
+  },[])
 
   // const dummyDa
   return (
