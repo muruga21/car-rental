@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     element:<App /> ,
   },
   {
-    path:'/Rent',
+    path:'/:carid',
     element:<RentPage/>
   },
   {
@@ -26,6 +26,7 @@ const router = createBrowserRouter([
 
   }
 ]);
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
