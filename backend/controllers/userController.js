@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const { userModel } = require('../models/userSchema');
 const { response } = require('express');
 const { carDetailModel } = require('../models/carDetailSchema');
+const { generateToken } = require('../middleware/auth');
 
 
 //import schema
@@ -14,11 +15,10 @@ const saltRounds = 10;
 const login = async (req, res) => {
     try{
         const userName = req.body.Name;
-
         const passWord = req.body.Password;
         console.log(userName,passWord)
         if(userName!="" && passWord!=""){
-            const user = await userModel.findOne({userName})
+            const user = await userModel.findOne({userName:userName})
              console.log(user)
             if(!user){
               return  res.status(500).json({error:true,message:"User Not Found"})
@@ -27,6 +27,11 @@ const login = async (req, res) => {
             const passwordMatch =  await bcrypt.compare(passWord,user.password);
             console.log(passwordMatch)
             if(passwordMatch){
+               const authToken = await generateToken(userName, user.userType);
+               if(authToken === ""){
+                return res.status(400).json({error:true, message:"auth token not generated"});
+               }
+               res.cookie("token", authToken);
                return res.status(200).json({error:false,message:"LoginSucessful"})
             }
             else{
