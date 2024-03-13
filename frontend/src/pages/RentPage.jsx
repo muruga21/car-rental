@@ -23,7 +23,7 @@ function RentPage(props) {
        <h2 >Rent Price :$99999</h2>
        <h2>Location: Coimbatore</h2>
 </div>
-
+ 
       </div>
       </div>
     </div>
