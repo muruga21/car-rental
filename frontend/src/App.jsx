@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Signup from './Components/SignupPage'
 import Login from './Components/LoginPage'
 import Homepage from './Components/Homepage';
+import AdminLogin from './Components/AdminLogin';
 function App() {
 
   // const dummyDa
