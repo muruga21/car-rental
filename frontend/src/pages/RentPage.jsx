@@ -12,7 +12,7 @@ function RentPage(props) {
   const handleClick=()=>{
     console.log(day)
   }
-
+  
   const [carData, setCarData] = useState({});
   
     const fetchCarData = async(params)=>{
@@ -20,6 +20,7 @@ function RentPage(props) {
       const response = await axios.get(`http://localhost:5000/users/${params.carid}`)
       setCarData(response.data.message)
     }
+
     
     useEffect(()=>{
       fetchCarData(params);

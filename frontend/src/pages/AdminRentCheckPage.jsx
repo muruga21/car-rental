@@ -1,78 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import RentedCarCard from '../Components/RentedCarCard'
 import NavBar from '../Components/NavBar'
+import axios from 'axios';
 
 function AdminRentCheckPage() {
     const carImg = "https://img.freepik.com/premium-photo/car-isolated-white-background-lamborghini-aventador-supercar-white-car-blank-clea-white-black_655090-607616.jpg?w=740";
 
-    const dummyData=[
-        {
-          name:"lamborgini",
-          image:carImg,
-          price:"$999958",
-          location:"Coimbatore"
-        },
-        {
-          name:"lamborgini",
-          image:carImg,
-          price:"$999958",
-          location:"Coimbatore"
-        },
-        {
-          name:"lamborgini",
-          image:carImg,
-          price:"$999958",
-          location:"Coimbatore"
-        },
-        {
-          name:"lamborgini",
-          image:carImg,
-          price:"$999958",
-          location:"Coimbatore"
-        },
-        {
-          name:"lamborgini",
-          image:carImg,
-          price:"$999958",
-          location:"Coimbatore"
-        },
-        {
-          name:"lamborgini",
-          image:carImg,
-          price:"$999958",
-          location:"Coimbatore"
-        },
-        {
-          name:"lamborgini",
-          image:carImg,
-          price:"$999958",
-          location:"Coimbatore"
-        },
-        {
-          name:"lamborginisdjifdshh",
-          image:carImg,
-          price:"$999958",
-          location:"Coimbatore"
-        },
-        {
-          name:"lamborgin587484i",
-          image:carImg,
-          price:"$999958",
-          location:"Coimbatore"
-        },
-        {
-          name:"lamborgini",
-          image:carImg,
-          price:"$999958",
-          location:"Coimbatore"
-        },
-        {
-          name:"lamborgini",
-          image:carImg,
-          price:"$999958",
-          location:"Coimbatore"
-        }
-    ]
+    const[dummyData,setDummyData]=useState([])
+
+    const fetchAvailableCars =async ()=>{
+        const response = await axios.get('http://localhost:5000/admin/viewRentedCars');
+        setDummyData(response.data.message)
+    }
+
+    useEffect(()=>{
+   
+        fetchAvailableCars();
+       
+    },[])
+
+    
+
+
+
+   
   return (
     <div className='h-[100%] w-[100%]  flex flex-col items-center'>
 
@@ -81,7 +32,11 @@ function AdminRentCheckPage() {
     </div>
         <div className='w-[80%] h-[100%] flex justify-center items-center flex-col border-2 shadow-lg mt-10'>
         {dummyData.map((val,index)=>{
-            return  <RentedCarCard key={index} price={val.price} name={val.name} image={val.image} location={val.location}/>
+            return  <RentedCarCard key={index} 
+                                  price={val.carPrice} 
+                                  name={val.carName} 
+                                  image={val.carPicture} 
+                                  location={val.location}/>
         })}
         </div>
     </div>
