@@ -11,6 +11,7 @@ import {
 import RentPage from './pages/RentPage.jsx';
 import Login from './Components/LoginPage.jsx';
 import Signup from './Components/SignupPage.jsx';
+import AdminRentCheckPage from './pages/AdminRentCheckPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <Signup/>
+  },
+  {
+    path:'/Admin',
+    element:<AdminRentCheckPage/>
   }
 ]);
 

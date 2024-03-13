@@ -4,8 +4,14 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 function RentPage(props) {
+  
+  const [day,setDay]=useState(0)
 
   const params = useParams();
+
+  const handleClick=()=>{
+    console.log(day)
+  }
 
   const [carData, setCarData] = useState({});
   
@@ -29,8 +35,10 @@ function RentPage(props) {
       <div className='float-left mr-10 w-[60%] flex flex-col items-start justify-center '>
         <h1 className='text-5xl'>{carData?.carName}</h1>
         <h3 className='text-xl mt-5 mb-10 '>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat excepturi illum fugit, culpa illo reiciendis, perferendis qui explicabo laudantium officiis repellendus repellat natus iusto sapiente cupiditate quos maxime et laboriosam.</h3>
-
-        <button className='border-2  w-[25%] h-[6%] bg-[#055c53]  rounded-md self-center text-white'>{ (carData.isAvailable)? 'Rent':'Not Available' }</button>
+        <div  className='flex justify-center items-center  w-[100%] h-[100%] p-6 border-10 mt-5 '>
+           <input type="Number" className='border-2 border-black m-10 p-1  rounded-md'  placeholder='Enter No of days' onChange={(val)=>setDay(val.target.value)}/>
+        <button className='border-2 w-[25%] h-10 bg-[#055c53]  rounded-md self-center text-white text-md'onClick={()=>{handleClick()}}>{ (carData.isAvailable)? 'Rent':'Not Available' }</button>
+        </div>
       </div>
       <div className='float-right w-[40%]'>
        <img src={carData?.carPicture} alt="" className='shadow-xl'/>
