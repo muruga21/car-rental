@@ -8,6 +8,8 @@ import Signup from './Components/SignupPage'
 import Login from './Components/LoginPage'
 import Homepage from './Components/Homepage';
 import AdminLogin from './Components/AdminLogin';
+import Details from './Components/AdminCarDetails';
+
 function App() {
 
   // const dummyDa
@@ -18,6 +20,9 @@ function App() {
    
     <NavBar/>
     <Homepage/>
+    
+    
+  
   </div>
   )
 }
