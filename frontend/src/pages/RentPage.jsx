@@ -9,8 +9,6 @@ function RentPage(props) {
 
   const [carData, setCarData] = useState({});
   
-    const carImg = "https://img.freepik.com/premium-photo/car-isolated-white-background-lamborghini-aventador-supercar-white-car-blank-clea-white-black_655090-607616.jpg?w=740";
-
     const fetchCarData = async(params)=>{
       console.log(`http://localhost:5000/users/${params.carid}`)
       const response = await axios.get(`http://localhost:5000/users/${params.carid}`)

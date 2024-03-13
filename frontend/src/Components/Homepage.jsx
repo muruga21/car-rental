@@ -22,14 +22,15 @@ const Homepage = () => {
   return (
     <div className='bg-[#ffffff] flex  flex-wrap h-[100%] w-[80%] border-2 shadow-xl mt-5 mb-10 p-2'>
       {dummyData.map((val,index)=>{
+        console.log(val)
         return  (<Link to={`/${val._id}`} key={index}> <div className='flex mt-10'>
         <div className='w-10 '></div>
 
         <CarDetailCard 
             key={index} 
-            name={val.name}  
-            image={val.image} 
-            price={val.price} 
+            name={val.carName}  
+            image={val.carPicture} 
+            price={val.carPrice} 
             location={val.location}
             carid = {val._id}
         />
