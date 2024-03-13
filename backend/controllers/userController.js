@@ -72,6 +72,7 @@ const signup = async(req, res) =>{
         const hashPassword = await bcrypt.hash(password, saltRounds);
 
         try{
+            //create update upsert true
             const doc = await userModel.create({userName: userName, password: hashPassword})
             if(doc){
                 return res.status(200).json({error:false, message:"user created successfully"});

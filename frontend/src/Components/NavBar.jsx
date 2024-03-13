@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function NavBar() {
   return (
@@ -8,6 +9,10 @@ function NavBar() {
       <input type="text" className='w-[60%] h-[50%] rounded-lg border-2 border-black bg-[#ffffff] mt-1 '  />
 
       <button>search</button>
+
+    <Link to='/Admin'> 
+      <button>AdminPage</button>
+    </Link>
     </div>
   )
 }
