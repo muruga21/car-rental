@@ -86,7 +86,7 @@ const signup = async(req, res) =>{
 
 const displayCars =async (req,res)=>{
     try
-    {const response = await carDetailModel.find({isAvailable:true});
+    {const response = await carDetailModel.find({});
     if(!response ){
         return res.status(404).json({error:true,message:"No Cars Found"})
     }
