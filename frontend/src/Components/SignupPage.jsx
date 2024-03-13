@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './SignupPage.css';
+import { Link } from "react-router-dom";
 
 function Signup() {
     const [signIn, setSignIn] = useState(true);
@@ -38,7 +39,7 @@ function Signup() {
             <button type="submit" class="bg-[#7747ff] w-max m-auto px-6 py-2 rounded text-white text-sm font-normal">Sign Up</button>
 
         </form>
-        <div class="text-sm text-center mt-[1.6rem]">Already Having an Account? <a class="text-sm text-[#7747ff]" href="">Login!</a></div>
+        <div class="text-sm text-center mt-[1.6rem]">Already Having an Account? <Link class="text-sm text-[#7747ff]" to="/login">Login!</Link></div>
     </div>
     </div>
     );

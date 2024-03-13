@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import '../index.css'
 
 function CarDetailCard(props) {
-
   return (
     <>
       <div className='bg-[#f2f5f5] shadow-xl w-70'>

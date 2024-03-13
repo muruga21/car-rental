@@ -9,7 +9,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import RentPage from './pages/RentPage.jsx';
-import AdminRentCheckPage from './pages/AdminRentCheckPage.jsx'
+import Login from './Components/LoginPage.jsx';
+import Signup from './Components/SignupPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -19,15 +20,8 @@ const router = createBrowserRouter([
   {
     path:'/:carid',
     element:<RentPage/>
-  },
-  {
-    path:'/Admin',
-    element: <AdminRentCheckPage/>
-
   }
 ]);
-
-
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

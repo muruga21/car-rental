@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './LoginPage.css';
+import { Link } from "react-router-dom";
 
 function Login() {
     const [signIn, setSignIn] = useState(true);
@@ -30,7 +31,7 @@ function Login() {
             <button type="submit" class="bg-[#7747ff] w-max m-auto px-6 py-2 rounded text-white text-sm font-normal">LogIn</button>
 
         </form>
-        <div class="text-sm text-center mt-[1.6rem]">Don’t have an account yet? <a class="text-sm text-[#7747ff]" href="#">Sign up for free!</a></div>
+        <div class="text-sm text-center mt-[1.6rem]">Don’t have an account yet? <Link class="text-sm text-[#7747ff]" to="/signup">Sign up for free!</Link></div>
     </div>
     </div>
     );
