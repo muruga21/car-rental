@@ -20,6 +20,7 @@ function NavBar(props) {
     <Link to='/Admin'> 
       <button >AdminPage</button>
     </Link>
+    <Link to="/Admininput">Add cars</Link>
     </div>
   )
 }
