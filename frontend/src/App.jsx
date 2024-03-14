@@ -23,9 +23,14 @@ function App() {
   const [location,SetLocation] = useState("")
 
   const [isFilter,setIsFilter] = useState(false)
+
+  const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
+  const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+  console.log(apiUrl)
+
+
   // const dummyDa
   return (
-
    
   <div className='flex  items-center flex-col w-[100%] h-[100%]'>
     <NavBar SetLocation={SetLocation} setIsFilter={setIsFilter} isFilter={isFilter}/>

@@ -8,8 +8,13 @@ function Login() {
 
     const [Name,setUsername]=useState("")
     const [Password,setPassword]=useState("")
+    // const]
+
+    const apiUrl = import.meta.env.REACT_APP_BACK_END;
+    console.log(apiUrl)
 
     const handleSubmit = async(e) =>{
+        
         // e.preventDefault();
         console.log("username", Name);
         console.log("pass", Password);
@@ -17,7 +22,10 @@ function Login() {
             'http://localhost:5000/users/login',
             {Name, Password}
         )
-        console.log(response.data);
+        localStorage.setItem('token',response.data.message);
+        if(response.status == 200){
+
+        }
     }
 
     return (
