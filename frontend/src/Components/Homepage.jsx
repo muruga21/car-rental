@@ -13,6 +13,7 @@ const Homepage = (props) => {
       'Content-Type': 'application/json'
   }})
      setDummyData(response.data.message)
+
 }
 
 const filter =async ()=>{
@@ -59,7 +60,6 @@ useEffect(()=>{
             image={val.carPicture} 
             price={val.carPrice} 
             location={val.location}
-            carid = {val._id}
         />
 
         </div> 

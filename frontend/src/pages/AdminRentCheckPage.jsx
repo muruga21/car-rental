@@ -8,26 +8,24 @@ function AdminRentCheckPage() {
 
     const[dummyData,setDummyData]=useState([])
 
+    const[change,setChange] = useState(false)
+
     const fetchAvailableCars =async ()=>{
         const response = await axios.get('http://localhost:5000/admin/viewRentedCars');
         setDummyData(response.data.message)
+
     }
 
     useEffect(()=>{
    
         fetchAvailableCars();
-       
-    },[])
-
-    
-
-
-
+    },[change])
    
   return (
     <div className='h-[100%] w-[100%]  flex flex-col items-center'>
-
-<div className='w-[100%] h-16 flex justify-around align-middle bg-[#f2f5f5] items-center'>
+      {        console.log(dummyData)
+}
+    <div className='w-[100%] h-16 flex justify-around align-middle bg-[#f2f5f5] items-center'>
       <h1 className='font-mono font-extrabold text-3xl'>Available Cars</h1>
     </div>
         <div className='w-[80%] h-[100%] flex justify-center items-center flex-col border-2 shadow-lg mt-10'>
@@ -36,7 +34,10 @@ function AdminRentCheckPage() {
                                   price={val.carPrice} 
                                   name={val.carName} 
                                   image={val.carPicture} 
-                                  location={val.location}/>
+                                  location={val.location}
+                                  id={val._id}
+                                  setChange={setChange}
+                                  change={change}/>
         })}
         </div>
     </div>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
 function NavBar(props) {
   
   const [txt,setTxt] = useState("")
@@ -20,6 +19,7 @@ function NavBar(props) {
     <Link to='/Admin'> 
       <button >AdminPage</button>
     </Link>
+    <Link to="/Admininput">Add cars</Link>
     </div>
   )
 }

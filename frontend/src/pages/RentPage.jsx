@@ -10,7 +10,8 @@ function RentPage(props) {
   const params = useParams();
 
   const handleClick=()=>{
-    console.log(day)
+    AdminRentCheckPage();
+    setCarData(!carData.isAvailable)
   }
   
   const [carData, setCarData] = useState({});
@@ -24,10 +25,15 @@ function RentPage(props) {
       setCarData(response.data.message)
     }
 
+    const AdminRentCheckPage =async ()=>{
+         const response = await axios.post("http://localhost:5000/users/update",{carid:params.carid})
+    }
+    
+    // const [change,setChange] = useState(true);
     
     useEffect(()=>{
       fetchCarData(params);
-    },[])
+    },[carData.isAvailable])
 
   return (  
 <div>

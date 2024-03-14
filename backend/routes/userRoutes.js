@@ -1,5 +1,5 @@
 const express = require("express");
-const { login, signup,displayCars,filterCars} = require("../controllers/userController");
+const { login, signup,displayCars,filterCars,updateCars} = require("../controllers/userController");
 const {getCar} = require("../controllers/CarController");
 const { checkUser } = require("../middleware/auth");
 const router = express.Router();

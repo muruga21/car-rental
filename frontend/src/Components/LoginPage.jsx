@@ -9,9 +9,14 @@ function Login() {
 
     const [Name,setUsername]=useState("")
     const [Password,setPassword]=useState("")
+    // const]
+
+    const apiUrl = import.meta.env.REACT_APP_BACK_END;
+    console.log(apiUrl)
     const [isLogedIn, setIsLogedIn] = useState(false);
 
     const handleSubmit = async(e) =>{
+        
         // e.preventDefault();
         // console.log("username", Name);
         // console.log("pass", Password);
