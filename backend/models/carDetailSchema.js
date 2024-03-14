@@ -6,7 +6,8 @@ const carDetailSchema = new mongoose.Schema({
     carPrice: {type: String, require: true, default:""},
     isAvailable: {type: Boolean, require: true, default: true},
     location: {type: String, require:true, default:""}
-})
+}
+)
 
 const carDetailModel = mongoose.model('carDetails',carDetailSchema);
 

@@ -107,13 +107,19 @@ const displayCars =async (req,res)=>{
 const filterCars =async (req,res)=>{
     //location
     const dist = req.body.location
+   
+    if(dist ==="" || dist===undefined){
+        return res.status(500).json({error:true,message:"Invalid Location"})
+    }
+
     const response = await carDetailModel.find({location: dist})
-    const count = await carDetailModel .find({location: dist}).count()
-    if(count==0){
-      return res.status(500).json({error:true,message:`No Cars in the location ${dist}`})
+    {console.log(response)}
+
+    if(!response){
+      return res.status(500).json({error:true,message:response})
     }
     else{
-        return res.status(200).json({error:false,count:count,response:response})
+        return res.status(200).json({error:false,response:response})
     }
 
 }
