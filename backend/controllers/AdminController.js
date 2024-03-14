@@ -37,7 +37,7 @@ const uploadCars = async(req, res) =>{
     const carPicture = req.body.carPicture;
     const carName = req.body.carName;
     const carPrice = req.body.carPrice;
-    const isAvailable = req.body.isAvailable;
+    const isAvailable = true;
     const location = req.body.location;
 
     if( carPicture === undefined || carName === undefined || carPrice === undefined || isAvailable === undefined || location === undefined){
