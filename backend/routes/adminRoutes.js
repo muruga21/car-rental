@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.route('/signup').post(signup)
 router.route('/upload').post(uploadCars)
+router.route('/update').post(uploadCars)
 router.route('/viewRentedCars').get(viewRentedCars)
 
 module.exports = router
