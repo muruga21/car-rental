@@ -65,10 +65,15 @@ const uploadCars = async(req, res) =>{
 
 const updateCars = async(req, res)=>{
     const carid = req.body.carid;
-    if(carid === "" || carid === undefined);
+    console.log("check")
+    if(carid === "" || carid === undefined) {
+        return res.status(401).json({error:true, message:"unknown car id"});
+
+    };
     try{
+        console.log(carid)
         const doc = await carDetailModel.updateOne({_id: carid}, {$set :{isAvailable: true}});
-        return res.status(200).json({error:true, message:"updated successfully"})
+        return res.status(200).json({error:false, message:doc})
     }
     catch(err){
         return res.status(401).json({error:true, message:err.message});
@@ -88,4 +93,4 @@ const viewRentedCars = async(req, res)=>{
     }
 }
 
-module.exports = {signup, uploadCars, viewRentedCars}
+module.exports = {signup, uploadCars, viewRentedCars,updateCars}

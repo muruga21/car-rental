@@ -11,6 +11,7 @@ const Homepage = (props) => {
   const fetchAvaliableCars = async() =>{
     const response = await axios.get('http://localhost:5000/users/display')
      setDummyData(response.data.message)
+
 }
 
 const filter =async ()=>{
@@ -53,7 +54,6 @@ useEffect(()=>{
             image={val.carPicture} 
             price={val.carPrice} 
             location={val.location}
-            carid = {val._id}
         />
 
         </div> 
