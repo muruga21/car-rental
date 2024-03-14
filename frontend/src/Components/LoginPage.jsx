@@ -2,26 +2,41 @@ import React, { useState } from "react";
 import './LoginPage.css';
 import { Link } from "react-router-dom";
 import axios from "axios"
+import { Navigate } from "react-router-dom";
 
 function Login() {
     const [signIn, setSignIn] = useState(true);
 
     const [Name,setUsername]=useState("")
     const [Password,setPassword]=useState("")
+    // const]
+
+    const apiUrl = import.meta.env.REACT_APP_BACK_END;
+    console.log(apiUrl)
+    const [isLogedIn, setIsLogedIn] = useState(false);
 
     const handleSubmit = async(e) =>{
+        
         // e.preventDefault();
-        console.log("username", Name);
-        console.log("pass", Password);
+        // console.log("username", Name);
+        // console.log("pass", Password);
         const response = await axios.post(
             'http://localhost:5000/users/login',
             {Name, Password}
         )
-        console.log(response.data);
+        console.log(response.data.message.token);
+        document.cookie = `${response.data.message.token}`
+        console.log(response.status);
+        if(response.status == 200){
+            setIsLogedIn(true);
+        }
     }
 
     return (
         <div className="Overall">
+            {
+                (isLogedIn == true)?<Navigate to="/" />:""
+            }
         <div class="max-w-md relative flex flex-col p-4 rounded-md text-black bg-white shadow-[0_35px_60px_-15px_rgba(0,0,0,0.2)] w-[400px]">
         <div class="text-2xl font-bold mb-2 text-[#1e0e4b] text-center">Welcome back to <span class="text-[#7747ff]">Car Rental</span></div>
         <div class="text-md font-normal mb-4 text-center text-[#1e0e4b]">Log in to your account</div>

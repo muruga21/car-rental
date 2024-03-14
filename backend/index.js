@@ -40,7 +40,7 @@ catch(err){
 app.use('/users',userRoutes)
 app.use('/admin',adminRoutes)
 
-// app.get('/hello',async (req, res)=>{
-//     res.cookie("muruga","abcdefghijklmn")
-//     return res.status(200).json({error:false, message:"hello world"})
-// })
+app.get('/hello',async (req, res)=>{
+    res.cookie("muruga","abcdefghijklmn")
+    return res.status(200).json({error:false, message:"hello world"})
+})

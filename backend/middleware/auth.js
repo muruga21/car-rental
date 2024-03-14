@@ -1,10 +1,15 @@
 const jwt = require('jsonwebtoken')
+const Cookie = require('js-cookie')
 
 const checkUser = async(req, res, next) =>{
     try{
-        const token = req.cookies.token;
-        console.log(token);
-        const decoded = jwt.decode(token);
+        console.log(req.headers.authorization)
+        // const token = Cookie.get();
+        if(req.headers.authorization === undefined){
+            return res.status(401).json({error:true, message:"invalid user"});
+        }
+        const decoded = jwt.decode(req.headers.authorization.split(" ")[1]);
+        console.log(decoded)
         if(decoded?.userType === 'user'){
             next();
         }

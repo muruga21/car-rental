@@ -6,10 +6,8 @@ const router = express.Router();
 
 router.route('/login').post(login)
 router.route('/signup').post(signup)
-router.route('/display').get( displayCars)
-router.route('/filter').post(filterCars)
-router.route('/:carid').get(getCar)
-router.route('/update').post(updateCars)
-
+router.route('/display').get(checkUser, displayCars)
+router.route('/filter').post(checkUser, filterCars)
+router.route('/:carid').get(checkUser, getCar)
 
 module.exports = router;
