@@ -63,6 +63,18 @@ const uploadCars = async(req, res) =>{
     }
 }
 
+const updateCars = async(req, res)=>{
+    const carid = req.body.carid;
+    if(carid === "" || carid === undefined);
+    try{
+        const doc = await carDetailModel.updateOne({_id: carid}, {$set :{isAvailable: true}});
+        return res.status(200).json({error:true, message:"updated successfully"})
+    }
+    catch(err){
+        return res.status(401).json({error:true, message:err.message});
+    }
+}
+
 const viewRentedCars = async(req, res)=>{
     console.log(req.cookies);
     try{
