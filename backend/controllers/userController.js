@@ -28,7 +28,7 @@ const login = async (req, res) => {
             const passwordMatch =  await bcrypt.compare(passWord,user.password);
             console.log(passwordMatch)
             if(passwordMatch){
-               const authToken = await generateToken(userName, user.userType);
+               const authToken = await generateToken(userName,"user");
                if(authToken === ""){
                 return res.status(400).json({error:true, message:"auth token not generated"});
                }
@@ -124,4 +124,22 @@ const filterCars =async (req,res)=>{
 
 }
 
-module.exports = {login, signup,displayCars,filterCars}
+const updateCars = async(req, res)=>{
+    const carid = req.body.carid;
+    console.log("check")
+    if(carid === "" || carid === undefined) {
+        return res.status(401).json({error:true, message:"unknown car id"});
+
+    };
+    try{
+        console.log(carid)
+        const doc = await carDetailModel.updateOne({_id: carid}, {$set :{isAvailable: false}});
+        return res.status(200).json({error:false, message:doc})
+    }
+    catch(err){
+        return res.status(401).json({error:true, message:err.message});
+    }
+}
+
+
+module.exports = {login, signup,displayCars,filterCars,updateCars}
