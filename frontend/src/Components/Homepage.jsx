@@ -7,9 +7,11 @@ const Homepage = (props) => {
 
   const [dummyData, setDummyData] = useState([])
 
-  
   const fetchAvaliableCars = async() =>{
-    const response = await axios.get('http://localhost:5000/users/display')
+    const response = await axios.get('http://localhost:5000/users/display',{headers: {
+      'Authorization': `Bearer ${document.cookie}`,
+      'Content-Type': 'application/json'
+  }})
      setDummyData(response.data.message)
 }
 
@@ -19,7 +21,11 @@ const filter =async ()=>{
     // const response = await axios(
     //   {method:'post',url:"http://localhost:5000/users/filter",headers:{},data:{location:props.location}}
     // );
-    const response = await axios.post("http://localhost:5000/users/filter",{location:props.location})
+    const response = await axios.post("http://localhost:5000/users/filter",
+    {location:props.location},{headers: {
+      'Authorization': `Bearer ${document.cookie}`,
+      'Content-Type': 'application/json'
+  }})
     setDummyData(response.data.response)
   } catch (error) {
     console.error('Error:', error.message);

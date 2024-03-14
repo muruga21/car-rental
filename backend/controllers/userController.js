@@ -32,8 +32,7 @@ const login = async (req, res) => {
                if(authToken === ""){
                 return res.status(400).json({error:true, message:"auth token not generated"});
                }
-               res.cookie("token", authToken);
-               return res.status(200).json({error:false,message:"LoginSucessful"})
+               return res.status(200).json({error:false,message:{ reqMessage:"LoginSucessful", token: authToken}})
             }
             else{
                 return res.status(500).json({error:true,message:"Password not Matching"})
@@ -107,6 +106,8 @@ const displayCars =async (req,res)=>{
 const filterCars =async (req,res)=>{
     //location
     const dist = req.body.location
+    console.log("check");
+    console.log(dist)
    
     if(dist ==="" || dist===undefined){
         return res.status(500).json({error:true,message:"Invalid Location"})

@@ -17,7 +17,10 @@ function RentPage(props) {
   
     const fetchCarData = async(params)=>{
       console.log(`http://localhost:5000/users/${params.carid}`)
-      const response = await axios.get(`http://localhost:5000/users/${params.carid}`)
+      const response = await axios.get(`http://localhost:5000/users/${params.carid}`,{headers: {
+        'Authorization': `Bearer ${document.cookie}`,
+        'Content-Type': 'application/json'
+    }})
       setCarData(response.data.message)
     }
 
