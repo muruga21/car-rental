@@ -10,10 +10,10 @@ function Details() {
     const [image,setImage]=useState("")
 
     return (
+        // <div class="bg-[url('https://images.pexels.com/photos/35967/mini-cooper-auto-model-vehicle.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-no-repeat bg-center w-full h-full flex justify-center">
         <div className="Overall  w-[500px] ">
         <div class="max-w-md relative flex flex-col p-4 rounded-md text-black shadow-[0_35px_60px_-15px_rgba(0,0,0,0.2)] w-[400px]">
         <div class="text-2xl font-bold mb-2 text-[#1e0e4b] text-center"><span class="text-[#7747ff]">Enter Car Details</span></div>
-        {/* /<div class="text-md font-normal mb-4 text-center text-[#1e0e4b]">Create your account</div> */}
         <form class="flex flex-col gap-3">
 
         <div class="block relative"> 
@@ -41,6 +41,7 @@ function Details() {
         </form>
     </div>
     </div>
+    // </div>
     );
 }
 

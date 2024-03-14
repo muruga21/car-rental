@@ -21,7 +21,6 @@ function App() {
     <NavBar/>
     <Homepage/>
     
-    
   
   </div>
   )
