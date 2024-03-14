@@ -10,6 +10,8 @@ import Homepage from './Components/Homepage';
 import AdminLogin from './Components/AdminLogin';
 import axios from 'axios';
 
+import Details from './Components/AdminCarDetails';
+
 function App() {
 
   // const apiUrl = process.env.REACT_APP_BACK_END;
